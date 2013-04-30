@@ -1,0 +1,4 @@
+This Vagrant configuration is for a Redmine 2.3 server built on top of Debian7 RC1.
+
+Debian 7 (aka Wheezy) was selected as it is on the verge of release in April 2013.  
+Redmine 2.3 is the current stable version of FusionForge.

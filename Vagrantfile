@@ -108,4 +108,13 @@ Vagrant.configure("2") do |config|
   # chef-validator, unless you changed the configuration.
   #
   #   chef.validation_client_name = "ORGNAME-validator"
+  
+  config.vm.provision :shell, :path => "installRedmine.sh"
+
+  config.vm.network :forwarded_port, guest: 80, host: 8080,
+    auto_correct: true
+
+  config.vm.network :forwarded_port, guest: 443, host: 8443,
+    auto_correct: true
+
 end
