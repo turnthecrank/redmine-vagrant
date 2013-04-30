@@ -1,0 +1,45 @@
+INSTALLATION
+
+To use this Vagrant v2 file follow basic Vagrant installation procedures. I.e.
+
+* Download and install your VM hosting software, e.g. Virtual Box.  
+  (see https://www.virtualbox.org/)
+* Download and install Vagrant.  See http://www.vagrantup.com/
+* Get the latest files for this VM:
+
+  git clone https://code.google.com/p/turnthecrank.redmine-vagrant/ redmine
+   
+* Change directories into the new source code repository and start the vagrant vm:
+
+  cd redmine
+  vagrant up
+
+* After a onetime download of the VM image, the VM will take about 11 minutes to build, 
+  start and provision.
+  
+* For web browser access to redmine, open a web browser on your host computer and access 
+
+  http://localhost:8080
+
+* You should see a Redmine page where you can click "Sign in" and provide the default 
+credentials username: admin, password: admin
+
+TROUBLESHOOTING
+
+Review the vagrant console during provisioning for errors.  In a normal provision, there 
+should be no errors and only a handful of warnings.  These warnings are normal:
+
+* stdin: is not a tty
+* dpkg-preconfigure: unable to re-open stdin: No such file or directory
+* Switched to a new branch '2.3-stable'
+* Extracting templates from packages: ...
+* Setting up X socket directories ...
+* Creating config file /etc/papersize with new version
+* Stopping MySQL database server: mysqld...
+
+Port Forwarding Errors
+
+If http://localhost:8080 does not direct you to a Redmine web page you may well have a 
+port conflict between your virtual machines.  Review the vagrant console for warnings 
+about a conflict.  A quick method to address such problems is to shutdown any VMs in 
+conflict.  
