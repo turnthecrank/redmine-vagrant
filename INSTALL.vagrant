@@ -5,16 +5,48 @@ To use this Vagrant v2 file follow basic Vagrant installation procedures. I.e.
 * Download and install your VM hosting software, e.g. Virtual Box.  
   (see https://www.virtualbox.org/)
 * Download and install Vagrant.  See http://www.vagrantup.com/
-* Get the latest files for this VM:
+* Get the latest files for this VM and cd into the new repo.
 
   git clone https://code.google.com/p/turnthecrank.redmine-vagrant/ redmine
-   
+  cd redmine
+  git checkout chef
+
+* Install ruby on your computer.
+
+* Install some chef prerequisites for chef-solo.  Chef-solo will need some 
+cookbooks locally.  librarian-checf makes this very easy.
+
+  gem install librarian-chef
+  librarian-chef init
+  librarian-chef install
+
+* Fix a bug in the redmine cookbook.  Run one of these code blocks to change the options
+with which redmine is cloned:
+
+sed -e "s/shallow_clone true/shallow_clone false/;" -i cookbooks/redmine/recipes/default.rb 
+
+cd cookbooks/redmine
+patch -p1 <<EOF
+--- a/recipes/default.rb
++++ b/recipes/default.rb
+@@ -85,7 +85,7 @@ deploy_revision node['redmine']['deploy_to'] do
+   user     node['apache']['user']
+   group    node['apache']['group']
+   environment "RAILS_ENV" => node['redmine']['env']
+-  shallow_clone true
++  shallow_clone false
+ 
+   before_migrate do
+     %w{config log system pids}.each do |dir|
+EOF
+cd ../../
+
 * Change directories into the new source code repository and start the vagrant vm:
 
   cd redmine
   vagrant up
 
-* After a onetime download of the VM image, the VM will take about 11 minutes to build, 
+* After a onetime download of the VM image, the VM will take about 15 minutes to build, 
   start and provision.
   
 * For web browser access to redmine, open a web browser on your host computer and access 
@@ -27,15 +59,10 @@ credentials username: admin, password: admin
 TROUBLESHOOTING
 
 Review the vagrant console during provisioning for errors.  In a normal provision, there 
-should be no errors and only a handful of warnings.  These warnings are normal:
+should be no errors and only a handful of warnings.  If it errors while cloning the git 
+repo, restart the provision and it will generally run to completion:
 
-* stdin: is not a tty
-* dpkg-preconfigure: unable to re-open stdin: No such file or directory
-* Switched to a new branch '2.3-stable'
-* Extracting templates from packages: ...
-* Setting up X socket directories ...
-* Creating config file /etc/papersize with new version
-* Stopping MySQL database server: mysqld...
+  vagrant provision
 
 Port Forwarding Errors
 

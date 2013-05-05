@@ -1,6 +1,8 @@
 INSTALLATION
 
-To use this Vagrant v2 file to create a production server, follow these procedures
+NOTE: the production installation procedure is not ready at this time.  
+
+To use this Chef cookbook to create a production server, follow these procedures:
 
 * Install and perform the most basic configuration of the OS.  This vagrant build of 
   Redmine was built on top of Debian 7.0 RC1.  As such, the latest rev of Debian 7.0 is 
@@ -9,36 +11,18 @@ To use this Vagrant v2 file to create a production server, follow these procedur
 * Get the latest files for this VM:
 
   git clone https://code.google.com/p/turnthecrank.redmine-vagrant/ redmine
-   
-* Change directories into the new source code repository and edit the file 
-  installRedmine.sh 
+  git checkout chef
 
-* Adjust the values of these variables to your needs.  Point SHARED_FOLDER to the 
-  directory created above by the git clone.
-
-  export SHARED_FOLDER=/home/yourname/redmine
-  export TARGET=/opt/redmine
-  export virtualHost=`hostname -f`
-
-* Run the installRedmine.sh script with root rights:
-
-  sudo installRedmine.sh 
-  
-* The installation of redmine components will take about 11 minutes.
-
+* Change directories into the new source code repository and edit the chef attributes file
+for this cookbook as is appropriate for this VM.
+* Run chef-solo with the local redmine-server cookbook
+* The installation of redmine components will take about 15 minutes.
 * The redmine server should be accessible at port 80 of $virtualHost as specified above.
   The default credentials are user: admin, password: admin.
 
 
 TROUBLESHOOTING
 
-Review the output of installRedmine.sh for errors.  In a normal install, there 
-should be no errors and only a handful of warnings.  These warnings are normal:
-
-* stdin: is not a tty
-* dpkg-preconfigure: unable to re-open stdin: No such file or directory
-* Switched to a new branch '2.3-stable'
-* Extracting templates from packages: ...
-* Setting up X socket directories ...
-* Creating config file /etc/papersize with new version
-* Stopping MySQL database server: mysqld...
+Review the chef output console for errors.  There should be no errors and only a handful
+of warnings.  If Chef-solo errors while cloning the git repo, rerun it and it will
+generally run to completion:

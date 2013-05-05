@@ -1,25 +1,16 @@
-This Vagrant configuration is for a Redmine 2.3 server built on top of Debian7 RC1.
-
-Debian 7 (aka Wheezy) was selected as it is on the verge of release in April 2013.  
-Redmine 2.3 is the current stable version of FusionForge.
+This Vagrant configuration is for a Redmine server built from source via chef on top of
+Debian7 RC1.
 
 Features
 
  * Suitable for production installations with minimal modifications
- * Configurable redmine installation folder
- * Configurable virtual hostname
- * Configurable installation source folder (aka /vagrant folder)
- * Zero-input installation
- * Dynamically generated mysql root and redmine passwords
- * Redmine built from source, specifically 2.3-stable branch
+ * Uses https://github.com/juanje/cookbook-redmine for redmine deployment 
 
 Limitations
 
  * http vhost support only (no https)
  * No plugins
  * Redmine admin password not configurable during the installation
- * All redmine environment--production, development and test--use the same database 
-   credentials.
 
 Installation
 

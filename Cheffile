@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'apache2'
+cookbook 'database'
+cookbook 'mysql'
+cookbook 'apt'
+cookbook 'git'
+
+cookbook 'redmine',
+  :git => 'https://github.com/juanje/cookbook-redmine.git',
+  :ref => 'master'

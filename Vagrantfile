@@ -142,7 +142,34 @@ Vagrant.configure("2") do |config|
   #
   #   chef.validation_client_name = "ORGNAME-validator"
   
-  config.vm.provision :shell, :path => "installRedmine.sh"
+  # config.vm.provision :shell, :path => "installRedmine.sh"
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = ["cookbooks", "cookbooks-local"]
+  
+    chef.json = {
+      :redmine => {
+        :databases => {
+          :production => {
+            :password => "redmine_password",
+            :adapter  => "mysql2"
+          }
+        },
+        :revision => "1.4.1"
+      },
+      :mysql => {
+        :server_root_password => "supersecret_password",
+        :server_repl_password => "iloverandompasswordsbutthiswilldo",
+        :server_debian_password => "iloverandompasswordsbutthiswilldo"
+      },
+    }
+
+    chef.add_recipe "apt"
+    chef.add_recipe "apache2"
+    chef.add_recipe "passenger_apache2"
+    chef.add_recipe "redmine"
+  
+  end
 
   config.vm.network :forwarded_port, guest: 80, host: 8080,
     auto_correct: true
