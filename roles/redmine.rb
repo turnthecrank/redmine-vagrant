@@ -5,6 +5,9 @@ run_list(
   "recipe[apt]",
   "recipe[apache2]",
   "recipe[passenger_apache2]",
+  "recipe[mysql::server]",
+  "recipe[database::mysql]",
+  "recipe[chefGemMysql]",
   "recipe[redmine]"
 )
 
@@ -16,7 +19,7 @@ default_attributes(
         "adapter"  => "mysql2"
       }
     },
-    "revision" => "1.4.1"
+    "revision" => "2.3-stable"
   },
   "mysql" => {
     "server_root_password"   => "supersecret_password",
