@@ -15,9 +15,24 @@ To use this Chef cookbook to create a production server, follow these procedures
 
 * Change directories into the new source code repository and edit the chef attributes file
 for this cookbook as is appropriate for this VM.
-* Run chef-solo with the local redmine-server cookbook
+* Install chef and ruby
+
+  sudo apt-get install chef ruby
+
+* Install some chef prerequisites for chef-solo.  Chef-solo will need some 
+cookbooks locally.  librarian-checf makes this very easy.
+
+  gem install librarian-chef
+  librarian-chef init
+  librarian-chef install
+
+* Fix a bug in the redmine cookbook.  
+
+sed -e "s/shallow_clone true/shallow_clone false/;" -i cookbooks/redmine/recipes/default.rb 
+
+* Run chef-solo with the redmine role and cookbook directories
 * The installation of redmine components will take about 15 minutes.
-* The redmine server should be accessible at port 80 of $virtualHost as specified above.
+* The redmine server should be accessible at port 80 of the Debian host.
   The default credentials are user: admin, password: admin.
 
 
