@@ -19,9 +19,13 @@ for this cookbook as is appropriate for this VM.
 
   sudo apt-get install chef ruby
 
+*install asks for the URL of the chef server, you can leave it blank.
+
 * Install some chef prerequisites for chef-solo.  Chef-solo will need some 
 cookbooks locally.  librarian-chef makes this very easy.
-
+  
+  * you need ruby dev for gem install
+  sudo apt-get install ruby-dev
   gem install librarian-chef
   librarian-chef install
 
