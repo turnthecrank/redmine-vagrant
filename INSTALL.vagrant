@@ -23,24 +23,31 @@ cookbooks locally.  librarian-chef makes this very easy.
   gem install librarian-chef
   librarian-chef install
 
-* Fix a bug in the redmine cookbook.  Run one of these code blocks to change the options
-with which redmine is cloned:
-
-sed -e "s/shallow_clone true/shallow_clone false/;" -i cookbooks/redmine/recipes/default.rb 
+* Apply this patch to fix some bugs in the redmine cookbook:
 
 cd cookbooks/redmine
-patch -p1 <<EOF
---- a/recipes/default.rb
-+++ b/recipes/default.rb
-@@ -85,7 +85,7 @@ deploy_revision node['redmine']['deploy_to'] do
-   user     node['apache']['user']
-   group    node['apache']['group']
-   environment "RAILS_ENV" => node['redmine']['env']
--  shallow_clone true
-+  shallow_clone false
+patch -R -p1 <<EOF
+--- a/recipes/source.rb
++++ b/recipes/source.rb
+@@ -20,6 +20,9 @@
+ # Some handy vars
+ environment = node['redmine']['env']
+ adapter = node["redmine"]["databases"][environment]["adapter"]
++if adapter == "mysql2"
++  adapter = "mysql"
++end
  
-   before_migrate do
-     %w{config log system pids}.each do |dir|
+ #Setup system package manager
+ case node['platform']
+@@ -138,7 +141,7 @@ if platform?("debian","ubuntu")
+       action :install
+     end
+     execute "update rubygems" do
+-      command '/var/lib/gems/1.8/bin/update_rubygems'
++      command 'update_rubygems'
+     end
+     execute "install bundler" do
+       command 'gem install bundler'
 EOF
 cd ../../
 

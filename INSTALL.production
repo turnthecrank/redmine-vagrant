@@ -25,9 +25,33 @@ cookbooks locally.  librarian-chef makes this very easy.
   gem install librarian-chef
   librarian-chef install
 
-* Fix a bug in the redmine cookbook.  
+* Apply this patch to fix some bugs in the redmine cookbook:
 
-sed -e "s/shallow_clone true/shallow_clone false/;" -i cookbooks/redmine/recipes/default.rb 
+cd cookbooks/redmine
+patch -R -p1 <<EOF
+--- a/recipes/source.rb
++++ b/recipes/source.rb
+@@ -20,6 +20,9 @@
+ # Some handy vars
+ environment = node['redmine']['env']
+ adapter = node["redmine"]["databases"][environment]["adapter"]
++if adapter == "mysql2"
++  adapter = "mysql"
++end
+ 
+ #Setup system package manager
+ case node['platform']
+@@ -138,7 +141,7 @@ if platform?("debian","ubuntu")
+       action :install
+     end
+     execute "update rubygems" do
+-      command '/var/lib/gems/1.8/bin/update_rubygems'
++      command 'update_rubygems'
+     end
+     execute "install bundler" do
+       command 'gem install bundler'
+EOF
+cd ../../
 
 * Run chef-solo with the redmine role and cookbook directories
 * The installation of redmine components will take about 15 minutes.
