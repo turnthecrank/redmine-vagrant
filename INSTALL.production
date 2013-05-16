@@ -20,10 +20,9 @@ for this cookbook as is appropriate for this VM.
   sudo apt-get install chef ruby
 
 * Install some chef prerequisites for chef-solo.  Chef-solo will need some 
-cookbooks locally.  librarian-checf makes this very easy.
+cookbooks locally.  librarian-chef makes this very easy.
 
   gem install librarian-chef
-  librarian-chef init
   librarian-chef install
 
 * Fix a bug in the redmine cookbook.  
