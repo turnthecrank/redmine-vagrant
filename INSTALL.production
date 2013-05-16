@@ -32,7 +32,7 @@ cookbooks locally.  librarian-chef makes this very easy.
 * Apply this patch to fix some bugs in the redmine cookbook:
 
 cd cookbooks/redmine
-patch -R -p1 <<EOF
+patch -p1 <<EOF
 --- a/recipes/source.rb
 +++ b/recipes/source.rb
 @@ -20,6 +20,9 @@
