@@ -19,7 +19,7 @@ default_attributes(
         "adapter"  => "mysql2"
       }
     },
-    "revision" => "2.3-stable"
+    "revision" => "2.3.1"
   },
   "mysql" => {
     "server_root_password"   => "supersecret_password",
