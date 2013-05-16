@@ -1,0 +1,16 @@
+0.2 (2013-05-16)
+ * Add CHANGELOG file (Philip Chase)
+ * Switch to brief license header (Philip Chase)
+ * Fix errors in installation documentation (Philip Chase)
+ * Improve production installation notes (Philip Chase)
+ * Revise redmine chef role to support the redmine 2.3-stable branch (Philip Chase)
+ * Remove unused cookbook directory from chef.cookbooks_path (Philip Chase)
+ * Move attributes and recipe adds from VagrantFile to a Chef role titled "redmine" (Philip Chase)
+ * Move from bash provisoning to chef provisioning. (Philip Chase)
+
+0.1 (2013-04-30)
+ * Add licensing (Philip Chase)
+ * Update documentation (Philip Chase)
+ * Add a bash provision script and supporting files to do a basic Redmine installation (Philip Chase)
+ * Initial commit of Redmine Vagrant file (Philip Chase)
+ 
