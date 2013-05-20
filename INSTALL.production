@@ -21,6 +21,13 @@ for this cookbook as is appropriate for this VM.
 
 *install asks for the URL of the chef server, you can leave it blank.
 
+* Configure the default cookbook path to point to where ever you have the git repo cookbooks path
+* in /etc/chef/solo.rb.
+* change the default path [file_cache_path    "/var/chef/cookbooks"] 
+  file_cache_path    <PATH TO THE GIT REPO COOKBOOKS I CHECKED OUT>.
+* 
+
+
 * Install some chef prerequisites for chef-solo.  Chef-solo will need some 
 cookbooks locally.  librarian-chef makes this very easy.
   
@@ -62,6 +69,7 @@ cd ../../
 * The redmine server should be accessible at port 80 of the Debian host.
   The default credentials are user: admin, password: admin.
 
+chef-solo -j runfile/runfile.json
 
 TROUBLESHOOTING
 
