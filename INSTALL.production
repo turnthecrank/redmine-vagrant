@@ -68,6 +68,7 @@ cd ../../
 * The installation of redmine components will take about 15 minutes.
 * The redmine server should be accessible at port 80 of the Debian host.
   The default credentials are user: admin, password: admin.
+chef-solo -j runfile.json  
 
 chef-solo -j runfile/runfile.json
 
