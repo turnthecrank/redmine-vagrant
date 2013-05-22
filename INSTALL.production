@@ -19,20 +19,19 @@ for this cookbook as is appropriate for this VM.
 
   sudo apt-get install chef ruby
 
-*install asks for the URL of the chef server, you can leave it blank.
-
+* Install asks for the URL of the chef server, you can leave it blank.
 * Configure the default cookbook path to point to where ever you have the git repo cookbooks path
-* in /etc/chef/solo.rb.
+  in /etc/chef/solo.rb.
 * change the default path [file_cache_path    "/var/chef/cookbooks"] 
-  file_cache_path    <PATH TO THE GIT REPO COOKBOOKS I CHECKED OUT>.
-* 
+  file_cache_path    <PATH TO THE GIT REPO COOKBOOKS I CHECKED OUT>. 
 
+* Install ruby-dev to allow gem install
+
+  sudo apt-get install ruby-dev
 
 * Install some chef prerequisites for chef-solo.  Chef-solo will need some 
 cookbooks locally.  librarian-chef makes this very easy.
   
-  * you need ruby dev for gem install
-  sudo apt-get install ruby-dev
   gem install librarian-chef
   librarian-chef install
 
