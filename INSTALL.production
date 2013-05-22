@@ -36,34 +36,6 @@ cookbooks locally.  librarian-chef makes this very easy.
   gem install librarian-chef
   librarian-chef install
 
-* Apply this patch to fix some bugs in the redmine cookbook:
-
-cd cookbooks/redmine
-patch -p1 <<EOF
---- a/recipes/source.rb
-+++ b/recipes/source.rb
-@@ -20,6 +20,9 @@
- # Some handy vars
- environment = node['redmine']['env']
- adapter = node["redmine"]["databases"][environment]["adapter"]
-+if adapter == "mysql2"
-+  adapter = "mysql"
-+end
- 
- #Setup system package manager
- case node['platform']
-@@ -138,7 +141,7 @@ if platform?("debian","ubuntu")
-       action :install
-     end
-     execute "update rubygems" do
--      command '/var/lib/gems/1.8/bin/update_rubygems'
-+      command 'update_rubygems'
-     end
-     execute "install bundler" do
-       command 'gem install bundler'
-EOF
-cd ../../
-
 * Run chef-solo with the redmine role and cookbook directories
 * The installation of redmine components will take about 15 minutes.
 * The redmine server should be accessible at port 80 of the Debian host.
@@ -77,3 +49,12 @@ TROUBLESHOOTING
 Review the chef output console for errors.  There should be no errors and only a handful
 of warnings.  If Chef-solo errors while cloning the git repo, rerun it and it will
 generally run to completion:
+
+Package Errors
+
+Packages that provide configuration files that differ from the default can result in
+provision failures.  To fix them, rerun the apt-get command that caused the error.  Here
+is one such that required a manual run answering "Y" to the prompts:
+
+  apt-get -q -y install libapache2-mod-passenger=3.0.13debian-1 
+
