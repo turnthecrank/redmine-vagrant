@@ -32,6 +32,7 @@ git config --global user.name "Redmine"
 rm .ssh/authorized_keys
 rm ~/.gitolite/keydir/*
 rm -rf repositories/gitolite-admin.git/
+rm gitolite-admin.pub
 
 # Symlink our public key to the default gitolite admin, "gitolite-admin"
 ln -s redmine_gitolite_admin_id_rsa.pub gitolite-admin.pub

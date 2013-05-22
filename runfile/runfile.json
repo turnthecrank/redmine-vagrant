@@ -36,7 +36,9 @@
                         "recipe[dmg]",
                         "recipe[openssl]",
                         "recipe[redmine]",
-                        "recipe[xfs]"
+                        "recipe[xfs]",
+                        "recipe[gitolite]",
+                        "recipe[gitoliteUser]"
 
 
                 ]

@@ -45,19 +45,16 @@ the Redmine Git Hosting Plugin.  "vagrant ssh" to access the console and run
 
   /vagrant/configureGitolite.sh
 
-
-Install Redmine plugins
-
-To install redmine plugins, follow these steps:
-
-* Use visudo to add allow redmine and gitolite to act as each other by adding this block:
+* Install Redmine Git Hosting Plugin by using visudo to add this block that allows 
+redmine and gitolite to act as each other:
 
 www-data    ALL=(git)       NOPASSWD:ALL
 git         ALL=(www-data)  NOPASSWD:ALL
 
-* run the plugin install script.  "vagrant ssh" to access the console and run 
+* Then install Redmine Git Hosting Plugin by running the commands in 
+installRedmineGitHostingPlugin.sh from "vagrant ssh" console: 
 
-  /vagrant/installRedminePlugins.sh
+  /vagrant/installRedmineGitHostingPlugin.sh
 
 * Configure Redmine as needed.
 

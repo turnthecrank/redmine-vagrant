@@ -53,6 +53,21 @@ re-run chef-solo
 * The redmine server should be accessible at port 80 of the Debian host.
   The default credentials are user: admin, password: admin.
 
+* Chef installed gitolite with a dummy key.  As such, reconfigure gitolite for use with
+the Redmine Git Hosting Plugin.  Run the commands in configureGitolite.sh by hand.  
+
+* Install Redmine Git Hosting Plugin by using visudo to add this block that allows 
+redmine and gitolite to act as each other:
+
+www-data    ALL=(git)       NOPASSWD:ALL
+git         ALL=(www-data)  NOPASSWD:ALL
+
+* Then install Redmine Git Hosting Plugin by running the commands in 
+installRedmineGitHostingPlugin.sh by hand
+
+* Configure Redmine as needed.
+
+
 TROUBLESHOOTING
 
 Review the chef output console for errors.  There should be no errors and only a handful
