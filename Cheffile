@@ -12,3 +12,7 @@ cookbook 'git'
 cookbook 'redmine',
   :git => 'git://github.com/pbchase/cookbook-redmine.git',
   :ref => 'master'
+
+cookbook 'gitolite',
+  :git => 'https://github.com/julionc/chef-gitolite.git',
+  :ref => 'master'

@@ -8,7 +8,9 @@ run_list(
   "recipe[mysql::server]",
   "recipe[database::mysql]",
   "recipe[chefGemMysql]",
-  "recipe[redmine]"
+  "recipe[redmine]",
+  "recipe[gitolite]",
+  "recipe[gitoliteUser]"
 )
 
 default_attributes(

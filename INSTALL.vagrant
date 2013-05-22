@@ -37,14 +37,39 @@ cookbooks locally.  librarian-chef makes this very easy.
 * You should see a Redmine page where you can click "Sign in" and provide the default 
 credentials username: admin, password: admin
 
+* Access "Administration" and set the default language.  Some features will not work 
+until this is set.
+
+* Chef installed gitolite with a dummy key.  As such, reconfigure gitolite for use with
+the Redmine Git Hosting Plugin.  "vagrant ssh" to access the console and run 
+
+  /vagrant/configureGitolite.sh
+
+
+Install Redmine plugins
+
+To install redmine plugins, follow these steps:
+
+* Use visudo to add allow redmine and gitolite to act as each other by adding this block:
+
+www-data    ALL=(git)       NOPASSWD:ALL
+git         ALL=(www-data)  NOPASSWD:ALL
+
+* run the plugin install script.  "vagrant ssh" to access the console and run 
+
+  /vagrant/installRedminePlugins.sh
+
+* Configure Redmine as needed.
+
+
 TROUBLESHOOTING
 
 Review the vagrant console during provisioning for errors.  In a normal provision, there 
 should be no errors and only a handful of warnings.  If you can address the error 
 manually, do so and restart the provision as below.  It will generally run to completion.
- 
-   vagrant provision
- 
+
+  vagrant provision
+
 Package Errors
 
 Packages that provide configuration files that differ from the default can result in 
@@ -53,6 +78,15 @@ apt-get command.  Here is one such that required a manual run answering "Y" to t
 prompts:
 
   apt-get -q -y install libapache2-mod-passenger=3.0.13debian-1 
+
+
+Missing Key Error
+
+If you are told the gitolite ssh key is not set, "vagrant ssh" to access the VM console 
+and run 
+
+  sudo sh /vagrant/makeGitoliteKeys.sh
+
 
 Port Forwarding Errors
 
