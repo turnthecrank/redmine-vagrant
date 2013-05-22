@@ -11,7 +11,6 @@ To use this Chef cookbook to create a production server, follow these procedures
 * Get the latest files for this VM:
 
   git clone https://code.google.com/p/turnthecrank.redmine-vagrant/ redmine
-  git checkout chef
 
 * Change directories into the new source code repository and edit the chef attributes file
 for this cookbook as is appropriate for this VM.
@@ -32,16 +31,27 @@ for this cookbook as is appropriate for this VM.
 * Install some chef prerequisites for chef-solo.  Chef-solo will need some 
 cookbooks locally.  librarian-chef makes this very easy.
   
-  gem install librarian-chef
+  sudo gem install librarian-chef
   librarian-chef install
 
+* Copy the local cookbooks to the file_cache_path above
+
+  sudo rsync -rcv cookbooks/* /var/chef/cookbooks/
+  sudo rsync -rcv cookbooks-local/* /var/chef/cookbooks/
+
 * Run chef-solo with the redmine role and cookbook directories
-* The installation of redmine components will take about 15 minutes.
+
+
+* if you run into problems with specific gems not installing, install them by hand, then 
+re-run chef-solo
+
+  gem install mysql
+  gem install rubygems-update
+  chef-solo -j runfile/runfile.json
+
+* The installation of redmine components will take about 15 minutes if it runs without incident.
 * The redmine server should be accessible at port 80 of the Debian host.
   The default credentials are user: admin, password: admin.
-chef-solo -j runfile.json  
-
-chef-solo -j runfile/runfile.json
 
 TROUBLESHOOTING
 
