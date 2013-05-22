@@ -30,7 +30,6 @@ git config --global user.name "Redmine"
 
 # Still as user git clean up any messes from failed gitolite setups
 rm .ssh/authorized_keys
-rm .ssh/*id_rsa*
 rm ~/.gitolite/keydir/*
 rm -rf repositories/gitolite-admin.git/
 
