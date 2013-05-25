@@ -4,6 +4,7 @@ description "Redmine box to manage development process"
 run_list(
   "recipe[apt]",
   "recipe[apache2]",
+  "recipe[apache2::mod_ssl]",
   "recipe[passenger_apache2]",
   "recipe[mysql::server]",
   "recipe[database::mysql]",

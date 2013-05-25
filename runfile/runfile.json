@@ -24,6 +24,7 @@
                         "recipe[git]",
                         "recipe[apt]",
                         "recipe[apache2]",
+                        "recipe[apache2::mod_ssl]",
                         "recipe[build-essential]",
                         "recipe[chef_handler]",
                         "recipe[git]",
