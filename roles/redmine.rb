@@ -5,6 +5,7 @@ run_list(
   "recipe[apt]",
   "recipe[apache2]",
   "recipe[apache2::mod_ssl]",
+  "recipe[apacheSitesOnRedmine]",
   "recipe[passenger_apache2]",
   "recipe[mysql::server]",
   "recipe[database::mysql]",

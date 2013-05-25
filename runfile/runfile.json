@@ -25,6 +25,7 @@
                         "recipe[apt]",
                         "recipe[apache2]",
                         "recipe[apache2::mod_ssl]",
+                        "recipe[apacheSitesOnRedmine]",
                         "recipe[build-essential]",
                         "recipe[chef_handler]",
                         "recipe[git]",
