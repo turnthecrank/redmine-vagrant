@@ -79,11 +79,8 @@ prompts:
 
 Missing Key Error
 
-If you are told the gitolite ssh key is not set, "vagrant ssh" to access the VM console 
-and run 
-
-  sudo sh /vagrant/makeGitoliteKeys.sh
-
+If you are told the gitolite ssh key is not set, review the instructions above for
+configureGitolite.sh.  They might need to be re-run in their entirety.
 
 Port Forwarding Errors
 
