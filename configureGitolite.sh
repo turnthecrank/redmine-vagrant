@@ -8,7 +8,7 @@ sudo chmod 700 ~www-data/.ssh
 sudo chown www-data.www-data ~www-data/.ssh
 
 # as user www-data, make those keys with the default names used by Redmine Git Hosting Plugin
-sudo -u www-data ssh-keygen -N '' -f ~/.ssh/redmine_gitolite_admin_id_rsa
+sudo -u www-data ssh-keygen -N '' -f ~www-data/.ssh/redmine_gitolite_admin_id_rsa
 
 # Still as user www-data, link private key to default ssh keyfile name to simplify testing
 sudo -u www-data ln -s ~www-data/.ssh/redmine_gitolite_admin_id_rsa ~www-data/.ssh/id_rsa
