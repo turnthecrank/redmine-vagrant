@@ -52,9 +52,10 @@ exit
 # * Check "Show redmine header in backlogs".
 # * Adjust "Story points" as needed.
 # * Check "Set story start- and duedate from sprint"
-# * set "Story follows Task status" to "Loosely follow Tasks average done ratio"
-# * set "Time zone for burndown day boundary" to "(GMT-5:00) Eastern..."
-# * check "Enable sharing".  Set "Share new Sprints" to "With all projects"
+# * Set "Story follows Task status" to "Loosely follow Tasks average done ratio"
+# * Set "Time zone for burndown day boundary" to "(GMT-5:00) Eastern..."
+# * Check "Show project name in backlogs"
+# * Check "Enable sharing".  Set "Share new Sprints" to "With all projects"
 #
 # Follow the procedure titled "Creating non-accepted closed states for stories/tasks" at 
 # http://www.redminebacklogs.net/en/installation.html to setting an Issue Status of 
