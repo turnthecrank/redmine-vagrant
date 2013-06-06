@@ -65,6 +65,14 @@ git         ALL=(www-data)  NOPASSWD:ALL
 * Then install Redmine Git Hosting Plugin by running the commands in 
 installRedmineGitHostingPlugin.sh by hand
 
+* Install Redmine Backlogs Plugin by running the commands in 
+installRedmineBacklogsPlugin.sh from "vagrant ssh" console: 
+
+  /vagrant/installRedmineBacklogsPlugin.sh
+  
+Note also the manual configuration steps for the Backlogs plugin described in 
+installRedmineBacklogsPlugin.sh  
+
 * Configure Redmine as needed.
 
 

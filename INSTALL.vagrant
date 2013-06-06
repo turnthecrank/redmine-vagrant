@@ -56,6 +56,14 @@ installRedmineGitHostingPlugin.sh from "vagrant ssh" console:
 
   /vagrant/installRedmineGitHostingPlugin.sh
 
+* Install Redmine Backlogs Plugin by running the commands in 
+installRedmineBacklogsPlugin.sh from "vagrant ssh" console: 
+
+  /vagrant/installRedmineBacklogsPlugin.sh
+  
+Note also the manual configuration steps for the Backlogs plugin described in 
+installRedmineBacklogsPlugin.sh  
+
 * Configure Redmine as needed.
 
 
