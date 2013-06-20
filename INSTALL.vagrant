@@ -13,6 +13,8 @@ To use this Vagrant v2 file follow basic Vagrant installation procedures. I.e.
 
 * Install ruby on your computer.
 
+
+
 * Change directories into the new source code repository and start the vagrant vm:
 
   cd redmine
@@ -20,6 +22,7 @@ To use this Vagrant v2 file follow basic Vagrant installation procedures. I.e.
 * Install some chef prerequisites for chef-solo.  Chef-solo will need some 
 cookbooks locally.  librarian-chef makes this very easy.
 
+  gem install chef
   gem install librarian-chef
   librarian-chef install
 
